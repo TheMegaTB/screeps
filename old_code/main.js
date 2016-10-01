@@ -12,11 +12,11 @@ var SPAWN_NAME = "TheMegaTB";
 
 var spawnPermissionHarvestersRequired = function() {
     return Object.keys(_.filter(Game.creeps, (creep) => creep.memory.role == "harvester")).length > 0;
-}
+};
 
 var spawnPermissionBuilderRequired = function() {
     return Object.keys(_.filter(Game.creeps, (creep) => creep.memory.role == "builder")).length > 0;
-}
+};
 
 var creepTypes = {
     Harvester: {

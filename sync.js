@@ -3,6 +3,30 @@ var https = require('https');
 var fs = require('fs');
 var uglify = false; // Set to true to uglify files before upload. ES6 is *not* supported-- https://github.com/mishoo/UglifyJS2/issues/448
 
+var walk = function(dir, done) {
+	var results = [];
+	fs.readdir(dir, function(err, list) {
+		if (err) return done(err);
+		var i = 0;
+		(function next() {
+			var file = list[i++];
+			if (!file) return done(null, results);
+			file = dir + '/' + file;
+			fs.stat(file, function(err, stat) {
+				if (stat && stat.isDirectory()) {
+					walk(file, function(err, res) {
+						results = results.concat(res);
+						next();
+					});
+				} else {
+					results.push(file);
+					next();
+				}
+			});
+		})();
+	});
+};
+
 // Watch git
 function parseBranch(HEAD) {
 	return HEAD === 'ref: refs/heads/master\n' ? 'master' : 'dev';
@@ -76,7 +100,7 @@ function schedulePush() {
 			auth: process.argv[2],
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8'
-			},
+			}
 		});
 		req.end(JSON.stringify({ branch: branch, modules: modules }));
 		req.on('response', function(res) {
