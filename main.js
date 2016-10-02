@@ -5,9 +5,9 @@ var async = require("async"),
 
 module.exports.loop = function () {
 
-    var myCreeps = _.filter(Game.creeps, (creep) => creep.my);
-    var population_size = Object.keys(myCreeps).length;
+    // var myCreeps = _.filter(Game.creeps, (creep) => creep.my);
+    // var population_size = Object.keys(myCreeps).length;
 
-    var mySpawns = async.update("mySpawns", c.UPDATE_INTERVAL_MY_SPAWNS, async.data.mySpawns, async.loader.byID);
-    console.log(mySpawns);
+    async.update(async.data.SOURCES);
+    var mySpawns = async.update(async.data.SPAWNS);
 };

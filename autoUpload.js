@@ -75,7 +75,7 @@ schedulePush();
 // Watch for local changes
 var pushTimeout;
 fs.watch('.', function(ev, file) {
-	if (file !== 'sync.js' && /\.js$/.test(file)) {
+	if (file !== 'autoUpload.js' && /\.js$/.test(file)) {
 		try {
 			modules[file.replace(/\.js$/, '')] = crush(branch, file, fs.readFileSync(file, 'utf8'));
 		} catch (err) {
