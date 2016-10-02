@@ -95,7 +95,7 @@ module.exports = {
             loader: loadByID
         },
         SOURCES: {
-            key: "spawns",
+            key: "sources",
             interval: c.updateInterval.SOURCES,
             saver: energySources
         },
