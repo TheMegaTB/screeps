@@ -3,8 +3,8 @@
 To sync the code to screeps create a file called ``screeps.json`` containing the following
 ```
 {
-  "email": "TheMegaTB",
-  "password": "{#TpbJTril_D_I0$",
+  "email": "USERNAME",
+  "password": "PASSWORD",
   "branch": "grunt",
   "ptr": false
 }
