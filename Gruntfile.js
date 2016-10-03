@@ -8,12 +8,14 @@ module.exports = function (grunt) {
                 cwd: 'src/',
                 src: '**/*.js',
                 dest: 'dist/',
-                flatten: true,
                 filter: 'isFile',
+                rename: function (dest, src) {       // The value for rename must be a function
+                    return dest + src.replace(/\//g, "."); // The function must return a string with the complete destination
+                }
             },
         },
         screeps: {
-            options: grunt.file.readJSON('screepslogin.json'),
+            options: grunt.file.readJSON('screeps.json'),
             dist: {
                 src: ['dist/**.js']
             }
