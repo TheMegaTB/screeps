@@ -20,7 +20,7 @@ module.exports = function (grunt) {
                 src: ['dist/**.js']
             }
         },
-        clean: 'dist/'
+        clean: ['dist/']
     });
 
     grunt.loadNpmTasks('grunt-screeps');
