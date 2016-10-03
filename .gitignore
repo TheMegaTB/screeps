@@ -1,6 +1,9 @@
 # IDEA
 /.idea
 
+# Grunt directory
+/dist
+
 # Logs
 logs
 *.log

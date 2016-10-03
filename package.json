@@ -1,0 +1,11 @@
+{
+  "name": "screeps",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-screeps": "^1.2.1"
+  }
+}
