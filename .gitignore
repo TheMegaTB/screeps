@@ -4,6 +4,9 @@
 # Grunt directory
 /dist
 
+# Screeps login data
+screeps.json
+
 # Logs
 logs
 *.log
