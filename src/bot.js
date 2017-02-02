@@ -1,34 +1,9 @@
+var c = require("constants");
+
 var calculateCost = function (body) {
     var cost = 0;
-    for (var part in body) {
-        part = body[part];
-        switch (part) {
-            case MOVE:
-                cost += 50;
-                break;
-            case CARRY:
-                cost += 50;
-                break;
-            case WORK:
-                cost += 100;
-                break;
-            case ATTACK:
-                cost += 80;
-                break;
-            case RANGED_ATTACK:
-                cost += 150;
-                break;
-            case HEAL:
-                cost += 250;
-                break;
-            case CLAIM:
-                cost += 600;
-                break;
-            case TOUGH:
-                cost += 10;
-                break;
-        }
-    }
+    for (var part in body)
+        cost += c.PARTS[body[part]];
     return cost;
 };
 
@@ -44,9 +19,14 @@ var Bot = class Bot {
     set body(parts) {
         this.parts = parts;
         this.cost = calculateCost(parts);
+        this.partCount = _.countBy(parts, _.identity);
+    }
+    
+    hasPart(part) {
+        return this.partCount[part] > 0;
     }
 
-    spawn(spawnID) {
+    spawnAt(spawnID) {
         Game.getObjectById(spawnID).createCreep(this.body, this.name, this);
     }
 }

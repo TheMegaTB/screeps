@@ -1,7 +1,8 @@
 "use strict";
 
 var async = require("async"),
-    Bot = require("bot");
+    Bot = require("bot"),
+    harv = require("plugins.harvester");
 
 function initMemory() {
     if (typeof Memory.plugins === "undefined") Memory.plugins = {};
@@ -18,4 +19,7 @@ module.exports.loop = function () {
 
     // new Bot([WORK, CARRY, MOVE]).spawn("455cb7e61b8bba8f01ba9e39");
     // console.log(Memory.creeps['Caden'].body); // Creep class has been converted to pure object
+    harv.init()
+    var bestHarvester = harv.getPerfectBot(300);
+    harv.rateBots([bestHarvester, new Bot([WORK, CARRY, MOVE])]);
 };
